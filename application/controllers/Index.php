@@ -18,6 +18,7 @@ class Index extends CI_Controller {
 
 		$data['hasil'] = "";
 
+		
 		$this -> load -> view ('user/home',$data);
 	}
 
