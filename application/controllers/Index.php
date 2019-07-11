@@ -64,26 +64,6 @@ class Index extends CI_Controller {
 		}
 
 
-		// $matrikBerpasangan = [];
-		// for ($i=0; $i < $countKriteria; $i++) { 
-		// 	for ($j=0; $j < $countKriteria; $j++) { 
-		// 		$data= "";
-		// 		for ($k=0; $k < $countKriteria; $k++) { 
-		// 			for ($l=0; $l < $countKriteria; $l++) { 
-		// 				if($k == $j){
-		// 					$data .= "(".$hasilDesimal[$i][$l]." X ".$variabelMatrikBerpasangan[$j][$l].")";
-		// 					if($l == ($countKriteria - 1)){
-		// 						$data .= "<br>";
-		// 					}else{
-		// 						$data .= "+";
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 		$matrikBerpasangan[$i][$j] = $data;
-		// 	}
-		// }
-
 		$matrikBerpasangan = [];
 		for ($i=0; $i < $countKriteria; $i++) { 
 			for ($j=0; $j < $countKriteria; $j++) { 
@@ -106,7 +86,38 @@ class Index extends CI_Controller {
 		}
 
 
-		var_dump($matrikBerpasangan); exit();
+		//tahap ke 2 hitung eiginvector
+		//1. jumlahkan baris yg ada
+		//2. jumlahkan jumlah baris yg ada
+		//3. normalisasi nilai dari masing
+			$eiginvector = [];
+			for ($m=0; $m < $countKriteria; $m++) {
+				$data2="";
+				for ($n=0; $n < $countKriteria; $n++) { 
+					$data2 .= $matrikBerpasangan[$m][$n] ;
+					if($n == ($countKriteria - 1)){
+						$data2 .= " ";
+					}else{
+						$data2 .= " + ";
+					}
+				}
+
+				$jml1[$m] = cobaHitung($data2); //hasil langkah 1
+			}
+
+			$jml2="";
+			for ($o=0; $o < $countKriteria; $o++) { 
+				$jml2 .= $jml1[$o];
+
+				if($o == ($countKriteria - 1)){
+					$jml2 .= " ";
+				}else{
+					$jml2 .= "+";
+				}
+			}
+
+			$hasil2 = cobaHitung($jml2); // hasil langkah 2
+		var_dump($hasil2); exit();
 		$this -> load -> view ('user/home',$data);
 	}
 	
