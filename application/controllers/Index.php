@@ -99,7 +99,7 @@ class Index extends CI_Controller {
 						}
 					}
 				}
-				$hasil =  cobaHitung($data);
+				$hasil =  cobaHitung($data); 
 				$matrikBerpasangan[$i][$j] = $hasil;
 			}
 		}
