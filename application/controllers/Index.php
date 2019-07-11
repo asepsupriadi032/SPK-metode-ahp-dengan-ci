@@ -29,6 +29,13 @@ class Index extends CI_Controller {
 		$data['kriteria'] = $this->db->get('kriteria')->result();
 		$data['hasil'] =  $this->input->post('id_kriteria');
 
+		$hasilKriteria = $this->hitungKriteria();
+		// hasil langkah 2
+		var_dump($hasilKriteria); exit();
+		$this -> load -> view ('user/home',$data);
+	}
+
+	public function hitungKriteria(){
 		$getKriteria = $this->db->get('kriteria');
 		$countKriteria = $getKriteria->num_rows();
 		$dataKriteria = $getKriteria->result();
@@ -90,35 +97,38 @@ class Index extends CI_Controller {
 		//1. jumlahkan baris yg ada
 		//2. jumlahkan jumlah baris yg ada
 		//3. normalisasi nilai dari masing
-			$eiginvector = [];
-			for ($m=0; $m < $countKriteria; $m++) {
-				$data2="";
-				for ($n=0; $n < $countKriteria; $n++) { 
-					$data2 .= $matrikBerpasangan[$m][$n] ;
-					if($n == ($countKriteria - 1)){
-						$data2 .= " ";
-					}else{
-						$data2 .= " + ";
-					}
-				}
-
-				$jml1[$m] = cobaHitung($data2); //hasil langkah 1
-			}
-
-			$jml2="";
-			for ($o=0; $o < $countKriteria; $o++) { 
-				$jml2 .= $jml1[$o];
-
-				if($o == ($countKriteria - 1)){
-					$jml2 .= " ";
+		for ($m=0; $m < $countKriteria; $m++) {
+			$data2="";
+			for ($n=0; $n < $countKriteria; $n++) { 
+				$data2 .= $matrikBerpasangan[$m][$n] ;
+				if($n == ($countKriteria - 1)){
+					$data2 .= " ";
 				}else{
-					$jml2 .= "+";
+					$data2 .= " + ";
 				}
 			}
 
-			$hasil2 = cobaHitung($jml2); // hasil langkah 2
-		var_dump($hasil2); exit();
-		$this -> load -> view ('user/home',$data);
+			$jml1[$m] = cobaHitung($data2); //hasil langkah 1
+		}
+
+		$jml2="";
+		for ($o=0; $o < $countKriteria; $o++) { 
+			$jml2 .= $jml1[$o];
+
+			if($o == ($countKriteria - 1)){
+				$jml2 .= " ";
+			}else{
+				$jml2 .= "+";
+			}
+		}
+
+		$hasil2 = cobaHitung($jml2);
+
+		for ($p=0; $p < $countKriteria; $p++) { 
+			$eiginvectorKriteria[$p] = round($jml1[$p]/$hasil2,2);
+		} 
+
+		return $eiginvectorKriteria;
 	}
 	
 	
