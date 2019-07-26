@@ -54,11 +54,11 @@ class Index extends CI_Controller {
 		//kalkulasi
 
 		for ($i=0; $i < $totalRow; $i++) { 
-			$hasilAkhir[$i] = $kriteriaBobot*$getData[$i];
+			$hasilSementara[$i] = round($kriteriaBobot*$getData[$i],2);
 		}
 
-
-		var_dump($hasilAkhir); exit();
+		// arsort($hasilSementara);
+		print_r($hasilKriteriaKecepatan); exit();
 
 		$this ->load->view ('user/home',$data);
 	}
@@ -164,7 +164,7 @@ class Index extends CI_Controller {
 	
 	public function hitungKriteriaHarga($id_kriteria){
 		// $getKriteria = $this->db->get('kriteria');
-		
+
 		$this->db->order_by('urutan','ASC');
 		$this->db->where('id_kriteria',$id_kriteria);
 		$this->db->join('operator','operator.id_operator=kriteria_provider.id_operator');
