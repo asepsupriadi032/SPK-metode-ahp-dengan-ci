@@ -10,10 +10,10 @@ class Menus extends CI_Model
 	{
 		$data = [];
 		$this->db->order_by('urutan','asc');
-		$query = $this->db->get_where("tjm_menu",array('status'=>1,'parent_menu'=>1,'type'=>$type));
+		$query = $this->db->get_where("menu",array('status'=>1,'parent_menu'=>1,'type'=>$type));
 		foreach ($query->result() as $key) {
 			//find anak
-			$anak1 = $this->db->get_where("tjm_menu",array('status'=>1,'parent_menu'=>$key->id));
+			$anak1 = $this->db->get_where("menu",array('status'=>1,'parent_menu'=>$key->id));
 			$tmp = [];
 			if($anak1->num_rows()){	
 				foreach ($anak1->result() as $keyanak1) {

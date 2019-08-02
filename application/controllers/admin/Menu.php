@@ -10,7 +10,7 @@ class Menu extends Super
         parent::__construct();
         $this->language       = 'english'; /** Indonesian / english **/
         $this->tema           = "flexigrid"; /** datatables / flexigrid **/
-        $this->tabel          = "tjm_menu";
+        $this->tabel          = "menu";
         $this->active_id_menu = "menu";
         $this->nama_view      = "Menu";
         $this->status         = true; 
@@ -32,7 +32,7 @@ class Menu extends Super
             /** Relasi Antar Tabel 
             * @parameter (nama_field_ditabel_ini, tabel_relasi, field_dari_tabel_relasinya)
             **/
-            $this->crud->set_relation('parent_menu','tjm_menu','nama_menu');
+            $this->crud->set_relation('parent_menu','menu','nama_menu');
 
             /** Upload **/
             // $this->crud->set_field_upload('nama_field_upload',$this->folder_upload);  

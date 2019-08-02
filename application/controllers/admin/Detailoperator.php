@@ -35,6 +35,7 @@ class Detailoperator extends Super
             * @parameter (nama_field_ditabel_ini, tabel_relasi, field_dari_tabel_relasinya)
             **/
             $this->crud->set_relation('id_operator','operator','nama_operator');
+            $this->crud->set_relation('id_kuota','kuota','jml_kuota');
             //$this->crud->set_relation('id_kota','kota','kota');
 
             /** Upload **/
@@ -42,7 +43,7 @@ class Detailoperator extends Super
             
             /** Ubah Nama yang akan ditampilkan**/
             // $this->crud->display_as('nama','Nama Setelah di Edit')
-            //     ->display_as('email','Email Setelah di Edit'); 
+            $this->crud->display_as('id_kuota','Kuota'); 
             
             /** Akhir Bagian GROCERY CRUD Edit Oleh User**/
             $data = array_merge($data,$this->generateBreadcumbs());
