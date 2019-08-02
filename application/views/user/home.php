@@ -1,6 +1,11 @@
 <?php $this->load->view ("user/header") ?>
 <!--banner-->
   <!-- Header -->
+  <style type="text/css">
+    li{
+      size:1000px !important;
+    }
+  </style>
   <header class="masthead d-flex">
     <div class="container text-center my-auto">
       <h1 class="mb-1">S E L A M A T D A T A N G</h1>
@@ -53,29 +58,19 @@
         <h2 class="mb-5">Tata Cara</h2>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <h4>
-            <strong>Survey</strong>
-          </h4>
-          <?php foreach ($kuisioner as $row) { ?>
-          <p class="text-faded mb-0"><?php echo $row->pertanyaan; ?></p>
-          	<?php 
-          		$this->db->where('id_kuisioner',$row->id_kuisioner);
-          		$row_data = $this->db->get('pg_kuisioner')->result();
-
-          		foreach ($row_data as $pg) {
-          		?>
-          			<input type="radio" name="voting" value="<?php echo $pg->id_pg_kuisioner ?>"> <?php echo $pg->pg_kuisioner ?><br>
-          		<?php
-          		}
-          	?>
-          <?php } ?>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <h4>
-            <strong>Hasil Polling</strong>
-          </h4>
-          <p class="text-faded mb-0">Hasil</p>
+        <div class="col-lg-10 text-justify">
+          <ol>
+            <li><h5> User memilih parameter kriteria :</h5><ul>
+              <li><h5> Promo </h5></li>
+              <li><h5> Harga </h5></li>
+              <li><h5> Kecepatan </h5></li>
+              </li>
+            </ul>
+            </li>
+            <li><h5> User memilih kuota yang sudah tersedia </h5></li>
+            <li><h5> Kemudian klik Proses </h5></li>
+            <li><h5> Akan muncul hasil sistem penunjang keputusan yang telah user pilih </h5></li>
+          </ol>
         </div>
       </div>
     </div>

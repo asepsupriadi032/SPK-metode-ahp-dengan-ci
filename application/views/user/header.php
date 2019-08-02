@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Stylish Portfolio - Start Bootstrap Template</title>
+  <title>SPK AHP</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="<?php echo base_url('assets/user') ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,13 +37,13 @@
         <a class="js-scroll-trigger" href="#page-top">Data</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#page-top">Home</a>
+        <a class="js-scroll-trigger" href="#page-top">Beranda</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#sao">Sistem Analisis Operator</a>
+        <a class="js-scroll-trigger" href="#sao">Sistem Analisis Provider</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#services">Survei Operator</a>
+        <a class="js-scroll-trigger" href="#services">Tata Cara</a>
       </li><!-- 
       <li class="sidebar-nav-item">
         <a class="js-scroll-trigger" href="#portfolio">Portfol</a>
