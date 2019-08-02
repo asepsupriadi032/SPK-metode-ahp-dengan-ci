@@ -17,8 +17,8 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-lg-5 mx-auto">
-          <h2>Judul</h2>
-          <p class="lead mb-5">Pilih salah satu kriteria</p>
+          <h2>Pilih Kriteria dan Kuota</h2>
+          <p class="lead mb-5"></p>
           <form action="#" method="post" id="formProses">
           <!-- <form action="<?php //echo base_url('Index/proses')?>" method="post"> -->
 	          <select name="id_kriteria" id="id_kriteria" class="form-control">
@@ -29,6 +29,13 @@
 	          	} ?>
 	          </select>
 	          <p></p>
+            <select name="id_kuota" id="id_kuota" class="form-control">
+              <?php foreach ($kuota as $key) {
+              ?>
+                <option value="<?php echo $key->id_kuota ?>"><?php echo $key->jml_kuota ?></option>
+              <?php
+              } ?>
+            </select><p></p>
 	          <!-- <input type="submit" name="proses" id="proses" value="Proses" class="btn btn-dark btn-xs js-scroll-trigger"> -->
             <button type="button" class="btn btn-dark btn-xs js-scroll-trigger" onclick="proses()">Proses</button>
 	        </form>
@@ -42,8 +49,8 @@
   <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
       <div class="content-section-heading">
-        <h3 class="text-secondary mb-0">Services</h3>
-        <h2 class="mb-5">What We Offer</h2>
+        <h3 class="text-secondary mb-0"></h3>
+        <h2 class="mb-5">Tata Cara</h2>
       </div>
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">

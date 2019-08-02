@@ -16,6 +16,8 @@ class Index extends CI_Controller {
 		$data['kuisioner']=$this->db->get('kuisioner')->result();
 
 		$data['kriteria'] = $this->db->get('kriteria')->result();
+		$data['kuota'] = $this->db->get('kuota')->result();
+		//var_dump($data['kuota']);die();
 
 		$data['hasil'] = "";
 
@@ -23,7 +25,7 @@ class Index extends CI_Controller {
 		$this -> load -> view ('user/home',$data);
 	}
 
-	public function proses($id_kriteria){
+	public function proses($id_kriteria, $id_kuota){
 
 		$data['kuisioner']=$this->db->get('kuisioner')->result();
 		$data['kriteria'] = $this->db->get('kriteria')->result();
@@ -60,11 +62,16 @@ class Index extends CI_Controller {
 		}
 		arsort($urutanSementara);
 		$data['hasil'] = $urutanSementara;
+		$data['id_kuota'] = $id_kuota;
 
 		// foreach ($data3 as $key) {
 		// 	echo $key['id_operator']."<br>";
 		// }
 		// print_r($data3); exit();
+
+		$this->db->where('id_kriteria',$id_kriteria);
+		$rowKriteria = $this->db->get('kriteria')->row();
+		$data['kriteria'] = $rowKriteria->kriteria;
 		$this->session->set_flashdata('hasil_ahp',true);
 
 		$this ->load->view ('user/hasil',$data);

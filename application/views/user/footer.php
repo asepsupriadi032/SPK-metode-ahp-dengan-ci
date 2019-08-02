@@ -44,14 +44,15 @@
   function proses(){
     // var str = $("#formProses").serialize();
     var id_kriteria = $("#id_kriteria").val();
-    // alert(id_kriteria);
+    var id_kuota = $("#id_kuota").val();
+    // alert(id_kuota);
       $.fancybox.open({
-           href : "Index/proses/"+id_kriteria,
+           href : "Index/proses/"+id_kriteria+"/"+id_kuota,
            type : 'iframe',
            helpers : {
                media: true 
            },
-           width: "50%",
+           width: "70%",
            height: 400,
            autoSize: false,
            scrolling: false
