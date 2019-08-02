@@ -36,7 +36,28 @@
 
   <!-- Custom scripts for this template -->
   <script src="<?php echo base_url('assets/user') ?>/js/stylish-portfolio.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url("assets/user")?>/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
 
 </body>
+
+<script type="text/javascript">
+  function proses(){
+    // var str = $("#formProses").serialize();
+    var id_kriteria = $("#id_kriteria").val();
+    // alert(id_kriteria);
+      $.fancybox.open({
+           href : "Index/proses/"+id_kriteria,
+           type : 'iframe',
+           helpers : {
+               media: true 
+           },
+           width: "50%",
+           height: 400,
+           autoSize: false,
+           scrolling: false
+      });
+  }
+  
+</script>
 
 </html>

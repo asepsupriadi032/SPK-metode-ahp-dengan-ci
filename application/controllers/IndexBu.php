@@ -8,7 +8,6 @@ class Index extends CI_Controller {
 		parent::__construct();
 		$this->load->helper("evalmath.class");
 		$this->load->helper('calculate');
-		$this->load->model('hasil');
 	}
 
 	public function index()
@@ -23,22 +22,22 @@ class Index extends CI_Controller {
 		$this -> load -> view ('user/home',$data);
 	}
 
-	public function proses($id_kriteria){
+	public function proses(){
 
 		$data['kuisioner']=$this->db->get('kuisioner')->result();
 		$data['kriteria'] = $this->db->get('kriteria')->result();
-		// $data['hasil'] =  $this->input->post('id_kriteria');
-		// $id_kriteria = $this->input->post('id_kriteria');
+		$data['hasil'] =  $this->input->post('id_kriteria');
+		$id_kriteria = $this->input->post('id_kriteria');
 
 		$hasilKriteria = $this->hitungKriteria();
 
 		//menghitung hasil eiginvector provider berdasarkan kriteria
-		$hasilKriteriaHarga = $this->hitungKriteriaHarga($id_kriteria);
-		$hasilKriteriaPromo = $this->hitungKriteriaPromo($id_kriteria);
-		$hasilKriteriaKecepatan = $this->hitungKriteriaKecepatan($id_kriteria);
+		$hasilKriteriaHarga = $this->hitungKriteriaHarga($this->input->post('id_kriteria'));
+		$hasilKriteriaPromo = $this->hitungKriteriaPromo($this->input->post('id_kriteria'));
+		$hasilKriteriaKecepatan = $this->hitungKriteriaKecepatan($this->input->post('id_kriteria'));
 		// hasil langkah 2
 
-		$arr = $id_kriteria - 1;
+		$arr = $this->input->post('id_kriteria') - 1;
 		$kriteriaBobot = $hasilKriteria[$arr];
 		
 		if($arr == 0){
@@ -67,7 +66,7 @@ class Index extends CI_Controller {
 		// print_r($data3); exit();
 		$this->session->set_flashdata('hasil_ahp',true);
 
-		$this ->load->view ('user/hasil',$data);
+		$this ->load->view ('user/home',$data);
 	}
 
 	public function hitungKriteria(){
@@ -484,8 +483,6 @@ class Index extends CI_Controller {
 
 		return array('hasil'=>$eiginvectorKriteria, 'id_operator'=>$id_operator);
 	}
-
-
 	
 
 	

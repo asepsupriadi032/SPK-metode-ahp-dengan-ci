@@ -21,6 +21,8 @@
   <!-- Custom CSS -->
   <link href="<?php echo base_url('assets/user') ?>/css/stylish-portfolio.min.css" rel="stylesheet">
 
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/user")?>/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
 </head>
 
 <body id="page-top">

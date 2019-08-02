@@ -32,6 +32,29 @@
 	          <!-- <input type="submit" name="proses" id="proses" value="Proses" class="btn btn-dark btn-xs js-scroll-trigger"> -->
             <button type="button" class="btn btn-dark btn-xs js-scroll-trigger" onclick="proses()">Proses</button>
 	        </form>
+
+	        <?php if(!empty($this->session->flashdata('hasil_ahp'))){?>
+            <table>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Operator</th>
+                  <th>Kuota</th>
+                  <th>Kisaran Harga</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php $no=1; foreach ($hasil as $key) { ?>
+                <tr>
+                  <td><?php echo $no ?></td>
+                  <td><?php echo $key['id_operator']; ?></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              <?php $no++; } ?>
+              </tbody>
+            </table>
+          <?php } ?>
           <!-- <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a> -->
         </div>
       </div>
